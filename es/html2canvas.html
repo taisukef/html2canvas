@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+</head>
+<body>
+<h1>html2canvas</h1>
+<button id="btn">btn</button>
+<script type="module">
+import { html2canvas } from "./html2canvas.js";
+
+const getImageDataFromCanvas = (c) => {
+  const ctx = c.getContext("2d");
+  return ctx.getImageData(0, 0, c.width, c.height);
+};
+btn.onclick = async () => {
+  const c = await html2canvas(document.body);
+  document.body.appendChild(c);
+  //const img = c.getContext("2d").getImageData();
+  const img = getImageDataFromCanvas(c);
+  console.log(img);
+ /*
+  console.log(html2canvas);
+  html2canvas(document.body).then(function(canvas) {
+    document.body.appendChild(canvas);
+  });
+  */
+};
+</script>
+</body>
+</html>

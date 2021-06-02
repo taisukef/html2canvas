@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+</head>
+<body>
+<h1>html2canvas</h1>
+<button id="btn">btn</button>
+<script type="module">
+import { html2image } from "./html2image.js";
+import { PNG } from "https://taisukef.github.io/PNG/PNG.js";
+import { downloadFile } from "https://js.sabae.cc/downloadFile.js";
+
+btn.onclick = async () => {
+  const imgdata = await html2image(document.body);
+  const png = PNG.encode(imgdata);
+  console.log(png);
+  downloadFile("screenshot.png", png);
+};
+</script>
+</body>
+</html>
